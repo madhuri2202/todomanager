@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container my-4">
+  <h2>Signup</h2>
+    <form method="POST" action="/signup">
+        
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="name" class="form-control" id="name" aria-describedby="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="email" name="password" required>
+        </div>
+        <button type="submit" class="btn btn-warning">Submit</button>
+      </form>
+
+
+
+{% endblock %}

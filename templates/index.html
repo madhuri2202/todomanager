@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Designed the loggin button in the div inside else  -->
+<style>
+  .login{
+    margin-left: 20%;
+  }
+
+</style>
+
+{% if current_user.is_authenticated %}
+
+
+<!-- If the user is authenticated then show him his task and textarea to enter the new task  -->
+
+<div class="container my-3">
+  
+<form method="POST" action="/">
+    <div class="form-group">
+      <label for="task">Enter Your Task</label>
+      <textarea class="form-control" id="task" rows="3" name="tsk"></textarea>
+    </div>
+    <button type="submit" class="btn btn-warning btn-lg btn-block">Enter Task</button>
+</form>
+</div>
+
+<div class=".table-responsive container">
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Task Description</th>
+      <th scope="col">Task Created On</th>
+      <th scope="col">Mark Task as Done</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for tsk in current_user.tsk %}
+    <tr>
+      <th scope="row">{{loop.index}}</th>
+      <td>{{tsk.task}}</td>
+      <td>{{tsk.tsk_dt}}</td>
+      <td><a href="{{ url_for('done', id = tsk.id) }}">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+          <path d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z"/>
+        </svg>
+      </a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+{% else %}
+
+<!-- If he is not authenticated then show him message to login to continue  -->
+<div class="my-5" style="margin-left:30vw ;">
+  <h1>Please Loggin to View your TODOs</h1>
+  <a href="/login" class="login"><button class="btn btn-info btn-lg">Login</button></a>
+</div>
+{% endif %}
+
+{% endblock %}
