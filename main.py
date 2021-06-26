@@ -9,7 +9,7 @@ from sqlalchemy.orm import relationship
 from datetime import datetime
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://wfnlfhyareftoi:7e0023d6c43dd51d32b1f4c55d6c56e4d4cfc62af2422aa4c02c28d9e281d9a9@ec2-54-158-232-223.compute-1.amazonaws.com:5432/devndig2l8l9aj'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://wfnlfhyareftoi:7e0023d6c43dd51d32b1f4c55d6c56e4d4cfc62af2422aa4c02c28d9e281d9a9@ec2-54-158-232-223.compute-1.amazonaws.com:5432/devndig2l8l9aj'
 app.config['SECRET_KEY'] = "142353453457463421341"
 db = SQLAlchemy(app)
 
